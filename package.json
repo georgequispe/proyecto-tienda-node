@@ -1,0 +1,16 @@
+{
+  "name": "tienda",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "George Quispe",
+  "license": "ISC",
+  "description": "Tienda virtual con filestore",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
