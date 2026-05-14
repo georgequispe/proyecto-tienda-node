@@ -1,12 +1,8 @@
 const args = process.argv.slice(2);
-console.log(args);
 const comando = args[0];
-console.log(comando);
 const listaProductos = args[1] ?? '';
-console.log(listaProductos);
 const [recurso, idDesdeRecurso] = listaProductos.split('/');
 const tamañoArray = args.slice(2);
-console.log(tamañoArray);
 async function obtenerDatos() {
     try {
         const response = await fetch('https://fakestoreapi.com/products');
@@ -39,10 +35,10 @@ async function crearProducto(producto) {
             throw new Error('Error en la respuesta de la API');
         }
         const data = await response.json();
-        console.log('Producto creado:', data);
+        console.log('Producto creado exitosamente:', data);
         
     } catch (error) {
-        console.error('Error al crear producto:', error);
+        console.error('No se pudo crear el producto:', error);
     }
 }
 async function eliminarProducto(productoId) {
@@ -74,7 +70,7 @@ async function buscarProducto(productoId) {
 }
 async function principal() {
     if (recurso !== 'products') {
-        console.log("Palabra no reconocida. Usa 'products' o 'products/<id>'");
+        console.log("Usa las palabras clave. Usa 'products' o 'products/<id>'");
         return;
     }
 
@@ -108,7 +104,7 @@ async function principal() {
             const productoId = idDesdeRecurso || tamañoArray[0];
             if (!productoId) {
                 console.log("Ingrese el ID del producto a eliminar: <id>");
-                console.log("Ejemplo: npm run start DELETE products 1");
+                console.log("Ejemplo: npm run start DELETE products/1");
                 return;
             }
             await eliminarProducto(productoId);
